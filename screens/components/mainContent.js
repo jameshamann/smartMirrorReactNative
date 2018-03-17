@@ -4,14 +4,7 @@ import SideBar from './sideBar';
 export default class MainContent extends Component {
   render() {
     return (
-    <Container>
-      <Header>
-       <Body>
-         <Title>Miri</Title>
-       </Body>
-       <Right />
-     </Header>
-         <Content>
+      <Content>
            <Card style={{flex: 0}}>
              <CardItem>
                <Left>
@@ -40,7 +33,6 @@ export default class MainContent extends Component {
              </CardItem>
            </Card>
         </Content>
-      </Container>
     );
   }
 }

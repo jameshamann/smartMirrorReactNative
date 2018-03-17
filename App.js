@@ -15,7 +15,7 @@ import {
 
 import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import SideBar from './screens/components/sideBar'
-
+import MainContent from './screens/components/mainContent'
 export default class App extends Component {
 
 
@@ -47,14 +47,13 @@ export default class App extends Component {
                 </Button>
                 </Right>
                 </Header>
-                 <Content>
+
                      <Drawer
                     ref={(ref) => { this._drawer = ref; }}
-                    content={<SideBar />}
+                    content={<SideBar navigator={this.navigator} />}
                     >
+                    <MainContent />
                     </Drawer>
-                </Content>
-
             </Container>
         );
       }
