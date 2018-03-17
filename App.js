@@ -37,16 +37,17 @@ export default class App extends Component {
                <Left>
                  <Thumbnail source={{uri: 'Image URL'}} />
                  <Body>
-                   <Text>NativeBase</Text>
-                   <Text note>April 15, 2016</Text>
+                   <Text>Your Device Name</Text>
+                   <Text note>Smart Mirror</Text>
+                   <Text note>Turned on</Text>
                  </Body>
                </Left>
              </CardItem>
              <CardItem>
                <Body>
                  <Text>
-                   //Your text here
                  </Text>
+                 <Button><Text>Common Functions</Text></Button>
                </Body>
              </CardItem>
              <CardItem>
