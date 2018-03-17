@@ -17,29 +17,41 @@ import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, T
 import SideBar from './screens/components/sideBar'
 
 export default class App extends Component {
+
+
   closeDrawer = () => {
         this._drawer._root.close();
+
     }
     openDrawer = () => {
         this._drawer._root.open();
-    }
+
+      }
+
     render() {
-        return (
+          return (
             <Container>
                 <Header>
                     <Left>
                         <Button transparent onPress={this.openDrawer.bind(this)}>
-                            <Icon name='menu'  />
+                          <Icon name='menu'/>
                         </Button>
+
                     </Left>
                     <Body>
-                    <Title> Miri </Title>
+                      <Title> Miri </Title>
                     </Body>
+                <Right>
+                <Button transparent onPress={this.closeDrawer.bind(this)}>
+                    <Icon name='close'/>
+                </Button>
+                </Right>
                 </Header>
                  <Content>
                      <Drawer
                     ref={(ref) => { this._drawer = ref; }}
-                    content={<SideBar />} >
+                    content={<SideBar />}
+                    >
                     </Drawer>
                 </Content>
 
