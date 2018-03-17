@@ -14,29 +14,36 @@ import {
 } from 'react-native';
 
 import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-import MainContent from './screens/components/drawer'
-import SideBar from './screens/components/sidebar'
+import SideBar from './screens/components/sideBar'
 
 export default class App extends Component {
-  constructor(props){
-    super(props);
+  closeDrawer = () => {
+        this._drawer._root.close();
     }
-  render() {
-     closeDrawer = () => {
-       this.drawer._root.close()
-     };
-     openDrawer = () => {
-       this.drawer._root.open()
-     };
-    return (
-      <Container>
-          <MainContent />
-          <Drawer
-            ref={(ref) => { this.drawer = ref; }}
-            content={<SideBar navigator={this.navigator} />}
-            onClose={() => this.closeDrawer()} >
-         </Drawer>
-      </Container>
-      );
-  }
-}
+    openDrawer = () => {
+        this._drawer._root.open();
+    }
+    render() {
+        return (
+            <Container>
+                <Header>
+                    <Left>
+                        <Button transparent onPress={this.openDrawer.bind(this)}>
+                            <Icon name='menu'  />
+                        </Button>
+                    </Left>
+                    <Body>
+                    <Title> Miri </Title>
+                    </Body>
+                </Header>
+                 <Content>
+                     <Drawer
+                    ref={(ref) => { this._drawer = ref; }}
+                    content={<SideBar />} >
+                    </Drawer>
+                </Content>
+
+            </Container>
+        );
+      }
+    }

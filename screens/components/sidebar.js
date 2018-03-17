@@ -4,7 +4,7 @@ export default class SideBar extends Component {
   render() {
     return (
     <Header>
-      <Title>Open Drawer</Title>
+      <Title>Welcome, James</Title>
     </Header>
     );
   }
