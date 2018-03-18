@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import AppWithAuth from './App';
 
-AppRegistry.registerComponent('smartMirrorReactNative', () => App);
+AppRegistry.registerComponent('smartMirrorReactNative', () => AppWithAuth);
