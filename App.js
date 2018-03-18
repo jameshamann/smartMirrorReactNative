@@ -14,10 +14,22 @@ import {
 } from 'react-native';
 
 import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-import SideBar from './screens/components/sideBar'
+import SideBar from './screens/components/sidebar'
 import MainContent from './screens/components/mainContent'
+
 import Login from './screens/login'
-export default class App extends Component {
+import Amplify from 'aws-amplify';
+import { Auth } from 'aws-amplify';
+
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
+
+import { withAuthenticator } from 'aws-amplify-react-native';
+import { Authenticator } from 'aws-amplify-react-native'
+
+
+class App extends Component {
 
 
   closeDrawer = () => {
@@ -53,9 +65,12 @@ export default class App extends Component {
                     ref={(ref) => { this._drawer = ref; }}
                     content={<SideBar navigator={this.navigator} />}
                     >
-                    <Login />
+                    <MainContent />
                     </Drawer>
             </Container>
+
         );
       }
     }
+
+export default withAuthenticator(App);
