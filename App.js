@@ -73,14 +73,4 @@ class App extends Component {
       }
     }
 
-class AppWithAuth extends Component {
-  render() {
-    return (
-      <Authenticator>
-        <App />
-      </Authenticator>
-    );
-  }
-}
-
-export default AppWithAuth;
+export default withAuthenticator(App);
