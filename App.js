@@ -17,6 +17,11 @@ import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, T
 import SideBar from './screens/components/sideBar'
 import MainContent from './screens/components/mainContent'
 import Login from './screens/login'
+import Amplify, { Auth } from 'aws-amplify';
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
+
 export default class App extends Component {
 
 
