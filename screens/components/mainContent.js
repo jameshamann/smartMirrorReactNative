@@ -26,8 +26,7 @@ export default class MainContent extends Component {
              <CardItem>
                <Left>
                  <Button transparent textStyle={{color: '#87838B'}}>
-                   <Icon name="logo-github" />
-                   <Text>1,926 stars</Text>
+
                  </Button>
                </Left>
              </CardItem>
