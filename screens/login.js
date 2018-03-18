@@ -16,8 +16,6 @@ import {
 import { Label, Input, Form, Item, Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 export default class Login extends Component {
 
-
-
     render() {
         return (
           <Container>
