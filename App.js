@@ -15,6 +15,8 @@ import {
 
 import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import SideBar from './screens/components/sidebar'
+import MainContent from './screens/components/mainContent'
+
 import Login from './screens/login'
 import Amplify from 'aws-amplify';
 import { Auth } from 'aws-amplify';
@@ -63,7 +65,7 @@ class App extends Component {
                     ref={(ref) => { this._drawer = ref; }}
                     content={<SideBar navigator={this.navigator} />}
                     >
-                    <Login />
+                    <MainContent />
                     </Drawer>
             </Container>
 

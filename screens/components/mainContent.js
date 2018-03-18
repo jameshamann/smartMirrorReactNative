@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
-import SideBar from './sideBar';
 export default class MainContent extends Component {
   render() {
     return (
