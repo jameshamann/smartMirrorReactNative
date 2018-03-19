@@ -28,8 +28,41 @@ Amplify.configure(aws_exports);
 import { withAuthenticator } from 'aws-amplify-react-native';
 import { Authenticator } from 'aws-amplify-react-native'
 
+import Aws from 'aws-sdk/dist/aws-sdk-react-native'
+import AwsIot from 'aws-iot-device-sdk'
 
 class App extends Component {
+
+  componentDidMount(){
+    Aws.config.region = AWS_REGION
+
+
+    Aws.config.credentials.get(() => {
+        const config = {}
+        let client
+
+        config.host = AWS_IOT_ENDPOINT
+        config.protocol = 'wss'
+        config.clientId = `client-${Math.floor((Math.random() * 100000) + 1)}`
+        config.accessKeyId = Aws.config.credentials.accessKeyId
+        config.secretKey = Aws.config.credentials.secretAccessKey
+        config.sessionToken = Aws.config.credentials.sessionToken
+
+        client = AwsIot.device(config)
+
+        client.on('connect', () => {
+            client.subscribe('some_topic')
+        })
+
+        client.on('message', (topic, message) => {
+            console.log(topic, message)
+        })
+
+        client.on('error', error => {
+            console.log(error)
+        })
+    })
+  }
 
 
   closeDrawer = () => {
