@@ -29,6 +29,21 @@ export default class MainContent extends Component {
                  </Button>
                </Left>
              </CardItem>
+             <CardItem>
+             <Container>
+                <Header />
+                <Content>
+                  <Form>
+                    <Item>
+                      <Input placeholder="Topic" />
+                    </Item>
+                    <Item last>
+                      <Input placeholder="Message" />
+                    </Item>
+                    <Button><Text>Submit!</Text></Button>
+                  </Form>
+                </Content>
+              </Container>
            </Card>
         </Content>
     );
