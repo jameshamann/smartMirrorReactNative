@@ -35,7 +35,9 @@ class App extends Component {
 
   componentDidMount(){
     Aws.config.region = AWS_REGION
-
+    Aws.config.credentials = new Aws.CognitoIdentityCredentials({
+        IdentityPoolId: AWS_COGNITO_IDENTITY_POOL
+    })
 
     Aws.config.credentials.get(() => {
         const config = {}
@@ -51,7 +53,7 @@ class App extends Component {
         client = AwsIot.device(config)
 
         client.on('connect', () => {
-            client.subscribe('some_topic')
+            client.subscribe('topic_1')
         })
 
         client.on('message', (topic, message) => {
