@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Form, Item } from 'native-base';
 export default class MainContent extends Component {
   render() {
     return (
@@ -25,7 +25,6 @@ export default class MainContent extends Component {
              <CardItem>
                <Left>
                  <Button transparent textStyle={{color: '#87838B'}}>
-
                  </Button>
                </Left>
              </CardItem>
@@ -44,6 +43,7 @@ export default class MainContent extends Component {
                   </Form>
                 </Content>
               </Container>
+            </CardItem>
            </Card>
         </Content>
     );

@@ -53,7 +53,7 @@ class App extends Component {
         client = AwsIot.device(config)
 
         client.on('connect', () => {
-            client.subscribe('topic_1')
+            client.publish('topic_1')
         })
 
         client.on('message', (topic, message) => {
