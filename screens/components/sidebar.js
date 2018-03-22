@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { Button, Footer, Title, Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch } from 'native-base';
 export default class SideBar extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
+    let name = this.props.userName
+    console.log(this.props.userName)
     return (
           <Content style={{backgroundColor: 'white'}}>
           <Header>
           <Body>
-            <Title>Welcome, James</Title>
+            <Title>Welcome, {name}</Title>
           </Body>
           </Header>
             <List>

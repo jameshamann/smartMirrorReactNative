@@ -27,6 +27,11 @@ Amplify.configure(aws_exports);
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {userName: ''}
+
+  }
 
   componentDidMount(){
     Auth.currentUserInfo().then(function(response){
@@ -34,24 +39,23 @@ class App extends Component {
       }).then(function(parsedData) {
         console.log(parsedData.username)
         this.setState({
-          name: parsedData.username
+          userName: parsedData.username
         })
       })
   }
 
   closeDrawer = () => {
         this._drawer._root.close();
-        console.log(this.state.name)
 
     }
     openDrawer = () => {
-
       this._drawer._root.open();
 
       }
 
 
     render() {
+      let name = this.state.userName
           return (
             <Container>
                 <Header>
@@ -73,7 +77,7 @@ class App extends Component {
 
                      <Drawer
                     ref={(ref) => { this._drawer = ref; }}
-                    content={<SideBar navigator={this.navigator} />}
+                    content={<SideBar navigator={this.navigator} userName={name} />}
                     >
                     <MainContent />
                     </Drawer>
