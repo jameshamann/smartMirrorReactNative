@@ -16,10 +16,11 @@ import {
 import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import SideBar from './screens/components/sidebar'
 import MainContent from './screens/components/mainContent'
-import { AmazonCognitoIdentity, CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
+import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
 
 import Login from './screens/login'
 import Amplify from 'aws-amplify-react-native';
+import { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { withAuthenticator, API } from 'aws-amplify-react-native';
 Amplify.configure(aws_exports);
@@ -28,24 +29,27 @@ Amplify.configure(aws_exports);
 class App extends Component {
 
   componentDidMount(){
-
-
-  var poolData = { UserPoolId : 'eu-west-2_WE3gHDxq6',
-        ClientId : '4tprh2pphe9gl93o4qh20scvtd'
-    };
-    var userPool = new CognitoUserPool(poolData);
-    var cognitoUser = userPool.getCurrentUser();
-    console.log(cognitoUser)
+    Auth.currentUserInfo().then(function(response){
+        return response
+      }).then(function(parsedData) {
+        console.log(parsedData.username)
+        this.setState({
+          name: parsedData.username
+        })
+      })
   }
 
   closeDrawer = () => {
         this._drawer._root.close();
+        console.log(this.state.name)
 
     }
     openDrawer = () => {
-        this._drawer._root.open();
+
+      this._drawer._root.open();
 
       }
+
 
     render() {
           return (
