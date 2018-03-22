@@ -25,6 +25,8 @@ import aws_exports from './aws-exports';
 import { withAuthenticator, API } from 'aws-amplify-react-native';
 Amplify.configure(aws_exports);
 
+import { withAuthenticator } from 'aws-amplify-react-native';
+import { Authenticator } from 'aws-amplify-react-native'
 
 class App extends Component {
   constructor(props){
