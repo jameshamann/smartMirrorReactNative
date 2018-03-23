@@ -1,6 +1,44 @@
 import React, { Component } from 'react';
-import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Form, Item } from 'native-base';
+import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Icon, Left, Body, Right, Form, Item } from 'native-base';
+import { Button } from 'react-native';
+
 export default class MainContent extends Component {
+
+constructor(props) {
+   super(props);
+   this.state = { text: '' };
+
+   this.handleChange = this.handleChange.bind(this);
+   this.handleSubmit = this.handleSubmit.bind(this);
+}
+
+handleChange(event) {
+  this.setState({value: event.target.value});
+}
+
+handleSubmit(event) {
+  console.log(this)
+  var results;
+  var self = this;
+  console.log(self);
+  fetch('https://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/topics/topic_1?q=1', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: 'Hello from React Native!',
+    }),
+  }).then(function(res){
+    return res.json().then(function(json){
+      console.log(json)
+    })
+  })
+  event.preventDefault();
+}
+
+
   render() {
     return (
       <Content>
@@ -19,13 +57,13 @@ export default class MainContent extends Component {
                <Body>
                  <Text>
                  </Text>
-                 <Button><Text>Common Functions</Text></Button>
+                 <Button
+                  title="Common Functions"
+                  />
                </Body>
              </CardItem>
              <CardItem>
                <Left>
-                 <Button transparent textStyle={{color: '#87838B'}}>
-                 </Button>
                </Left>
              </CardItem>
              <CardItem>
@@ -39,7 +77,12 @@ export default class MainContent extends Component {
                     <Item last>
                       <Input placeholder="Message" />
                     </Item>
-                    <Button><Text>Submit!</Text></Button>
+                    <Button
+                      onPress={(event) => this.handleSubmit(event)}
+                      title="Hello"
+                      color="#841584"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
                   </Form>
                 </Content>
               </Container>
