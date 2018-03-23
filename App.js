@@ -25,7 +25,6 @@ import aws_exports from './aws-exports';
 import { withAuthenticator, API } from 'aws-amplify-react-native';
 Amplify.configure(aws_exports);
 
-import { withAuthenticator } from 'aws-amplify-react-native';
 import { Authenticator } from 'aws-amplify-react-native'
 
 class App extends Component {
@@ -36,14 +35,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    Auth.currentUserInfo().then(function(response){
-        return response
-      }).then(function(parsedData) {
-        console.log(parsedData.username)
-        this.setState({
-          userName: parsedData.username
-        })
-      })
+    console.log("Before")
+    console.log(this.props.authData.username)
   }
 
   closeDrawer = () => {
@@ -52,6 +45,7 @@ class App extends Component {
     }
     openDrawer = () => {
       this._drawer._root.open();
+      console.log(this.state.userName)
 
       }
 
@@ -79,7 +73,7 @@ class App extends Component {
 
                      <Drawer
                     ref={(ref) => { this._drawer = ref; }}
-                    content={<SideBar navigator={this.navigator} userName={name} />}
+                    content={<SideBar navigator={this.navigator} userName={this.props.authData.username} />}
                     >
                     <MainContent />
                     </Drawer>
