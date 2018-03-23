@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Icon, Left, Body, Right, Form, Item } from 'native-base';
 import { Button } from 'react-native';
+import { API } from 'aws-amplify-react-native';
+
 
 export default class MainContent extends Component {
 
