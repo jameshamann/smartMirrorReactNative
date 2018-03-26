@@ -9,7 +9,7 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180326153925.zip
+            codeFilename: uploads/sampleLambda-20180326194458.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
@@ -22,7 +22,7 @@ features:
             timeout: '3'
             version: opSbfKjWuJsAnl1z47W00HhW4t3xnRxO
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180326153925.zip
+            codeFilename: uploads/sampleLambda-20180326194458.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
