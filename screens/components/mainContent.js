@@ -6,6 +6,28 @@ import { API } from 'aws-amplify-react-native';
 
 export default class MainContent extends Component {
 
+  Amplify.configure({
+    Auth: {
+    // REQUIRED - Amazon Cognito Identity Pool ID
+        identityPoolId: 'XX-XXXX-X:XXXXXXXX-XXXX-1234-abcd-1234567890ab',
+    // REQUIRED - Amazon Cognito Region
+        region: 'XX-XXXX-X',
+    // OPTIONAL - Amazon Cognito User Pool ID
+        userPoolId: 'XX-XXXX-X_abcd1234',
+    // OPTIONAL - Amazon Cognito Web Client ID
+        userPoolWebClientId: 'XX-XXXX-X_abcd1234',
+    },
+    API: {
+        endpoints: [
+            {
+                name: "SmartMirrorMessageTopic_1",
+                endpoint: "https://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/topics/topic_1?q=1",
+                service: "iotdata",
+                region: "eu-west-2"
+            }
+        ]
+    }
+
 constructor(props) {
    super(props);
    this.state = { text: '' };
