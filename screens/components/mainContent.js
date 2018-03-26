@@ -25,7 +25,7 @@ handleSubmit(event) {
 let apiName = 'sampleCloudApi'; // replace this with your api name.
 let path = '/items'; //replace this with the path you have configured on your API
 let myInit = {
-    body: {'message': 'hello from react native'}, // replace this with attributes you need
+    body: {'topic_1': 'hello from react native'}, // replace this with attributes you need
 }
 
 API.post(apiName, path, myInit).then(response => {
