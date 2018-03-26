@@ -60,7 +60,7 @@ app.post('/items', function(req, res) {
   });
 
   // Add your code here
-  res.json({success: 'Hello From Lambda!' + res, url: req.url, body: req.body})
+  res.json({success: 'Hello From Lambda!', url: req.url, body: req.body, device})
 });
 
 app.post('/items/*', function(req, res) {
