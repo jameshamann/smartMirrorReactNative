@@ -15,6 +15,7 @@ var awsIot = require('aws-iot-device-sdk');
 var app = express()
 app.use(bodyParser.json())
 
+
 // Enable CORS for all methods
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -44,12 +45,18 @@ app.get('/items/*', function(req, res) {
 ****************************/
 
 app.post('/items', function(req, res) {
-  var iotdata = new AWS.IotData({endpoint: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'});
-  iotdata.getThingShadow(params, function (err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else  {
-      res.json({success: data, body: req.body})
-    }          // successful response
+  var device = awsIot.device({
+        host: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'
+  });
+
+  device
+    .on('connect', function() {
+      console.log('Lambda!');
+      device.subscribe('topic_2');
+      device.publish('topic_1', JSON.stringify({ test_data: 1}));
+      res.json({success: "Hello", body: req.body})
+    });
+
   });
 
   // Add your code here
