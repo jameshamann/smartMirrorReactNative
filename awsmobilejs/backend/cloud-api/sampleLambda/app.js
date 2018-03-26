@@ -9,12 +9,10 @@ See the License for the specific language governing permissions and limitations 
 var express = require('express')
 var bodyParser = require('body-parser')
 var AWS = require('aws-sdk')
-var awsIot = require('aws-iot-device-sdk');
 
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
-
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
@@ -45,22 +43,8 @@ app.get('/items/*', function(req, res) {
 ****************************/
 
 app.post('/items', function(req, res) {
-  var device = awsIot.device({
-        host: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'
-  });
-
-  device
-    .on('connect', function() {
-      console.log('Lambda!');
-      device.subscribe('topic_2');
-      device.publish('topic_1', JSON.stringify({ test_data: 1}));
-      res.json({success: "Hello", body: req.body})
-    });
-
-  });
-
   // Add your code here
-  res.json({success: 'Hello From Lambda!', url: req.url, body: req.body, device})
+  res.json({success: 'Hello From Lambda!', url: req.url, body: req.body})
 });
 
 app.post('/items/*', function(req, res) {
