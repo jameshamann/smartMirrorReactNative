@@ -47,7 +47,9 @@ app.post('/items', function(req, res) {
   var iotdata = new AWS.IotData({endpoint: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'});
   iotdata.getThingShadow(params, function (err, data) {
     if (err) console.log(err, err.stack); // an error occurred
-    else     var res = data;           // successful response
+    else  {
+      res.json({success: data, body: req.body})
+    }          // successful response
   });
 
   // Add your code here
