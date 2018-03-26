@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Icon, Left, Body, Right, Form, Item } from 'native-base';
 import { Button } from 'react-native';
-import { API } from 'aws-amplify-react-native';
+import Amplify, { API } from 'aws-amplify';
+
+
 
 
 export default class MainContent extends Component {
 
-  Amplify.configure({
-    API: {
-        endpoints: [
-            {
-                name: "SmartMirrorMessageTopic_1",
-                endpoint: "https://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/topics/topic_1?q=1",
-                service: "iotdata",
-                region: "eu-west-2"
-            }
-        ]
-    }
 
 constructor(props) {
    super(props);
@@ -31,24 +22,19 @@ handleChange(event) {
 }
 
 handleSubmit(event) {
+let apiName = 'sampleCloudApi'; // replace this with your api name.
+let path = '/items'; //replace this with the path you have configured on your API
+let myInit = {
+    body: {'message': 'hello from react native'}, // replace this with attributes you need
+}
+
+API.post(apiName, path, myInit).then(response => {
+  return response
+}).then(function(response) {
+  console.log(response)
+});
+
   console.log(this)
-  var results;
-  var self = this;
-  console.log(self);
-  fetch('https://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/topics/topic_1?q=1', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      message: 'Hello from React Native!',
-    }),
-  }).then(function(res){
-    return res.json().then(function(json){
-      console.log(json)
-    })
-  })
   event.preventDefault();
 }
 

@@ -9,6 +9,7 @@ See the License for the specific language governing permissions and limitations 
 var express = require('express')
 var bodyParser = require('body-parser')
 var AWS = require('aws-sdk')
+var awsIot = require('aws-iot-device-sdk');
 
 // declare a new express app
 var app = express()
@@ -43,13 +44,19 @@ app.get('/items/*', function(req, res) {
 ****************************/
 
 app.post('/items', function(req, res) {
+  var iotdata = new AWS.IotData({endpoint: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'});
+  iotdata.getThingShadow(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);           // successful response
+  });
+
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  res.json({success: 'Hello From Lambda!', url: req.url, body: req.body})
 });
 
 app.post('/items/*', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  res.json({success: 'Hello From Lambda!', url: req.url, body: req.body})
 });
 
 /****************************

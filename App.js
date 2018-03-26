@@ -19,8 +19,7 @@ import MainContent from './screens/components/mainContent'
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
 
 import Login from './screens/login'
-import Amplify from 'aws-amplify-react-native';
-import { Auth } from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { withAuthenticator, API } from 'aws-amplify-react-native';
 Amplify.configure(aws_exports);
