@@ -13,9 +13,11 @@ import {
   NativeModules,
 } from 'react-native';
 
-import { Drawer, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Drawer, Container, Title, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import SideBar from './screens/components/sidebar'
 import MainContent from './screens/components/mainContent'
+import Connect from './screens/components/connect'
+
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
 
 import Login from './screens/login'
@@ -74,7 +76,7 @@ class App extends Component {
                     ref={(ref) => { this._drawer = ref; }}
                     content={<SideBar navigator={this.navigator} userName={this.props.authData.username} />}
                     >
-                    <MainContent />
+                    <Connect />
                     </Drawer>
             </Container>
 

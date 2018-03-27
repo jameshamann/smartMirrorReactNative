@@ -25,6 +25,7 @@
     "process": "^0.11.10",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.2",
+    "react-native-aws-iot-device-shadows": "^1.0.3",
     "react-native-level-fs": "^3.0.0",
     "react-native-material-ui": "^1.20.0",
     "react-native-vector-icons": "^4.5.0",

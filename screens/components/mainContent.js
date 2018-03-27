@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Input, Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Icon, Left, Body, Right, Form, Item } from 'native-base';
 import { Button } from 'react-native';
 import Amplify, { API } from 'aws-amplify';
-
-
-
-
+import AWS from 'aws-sdk/dist/aws-sdk-react-native'
+import AwsIot from 'aws-iot-device-sdk'
+import AWSIoTMQTT from 'react-native-aws-iot-device-shadows'
 export default class MainContent extends Component {
-
 
 constructor(props) {
    super(props);
@@ -15,26 +13,17 @@ constructor(props) {
 
    this.handleChange = this.handleChange.bind(this);
    this.handleSubmit = this.handleSubmit.bind(this);
+
 }
+
 
 handleChange(event) {
   this.setState({value: event.target.value});
 }
 
+
 handleSubmit(event) {
-let apiName = 'sampleCloudApi'; // replace this with your api name.
-let path = '/items'; //replace this with the path you have configured on your API
-let myInit = {
-    body: {'topic_1': 'hello from react native'}, // replace this with attributes you need
-}
-
-API.post(apiName, path, myInit).then(response => {
-  return response
-}).then(function(response) {
-  console.log(response)
-});
-
-  console.log(this)
+  console.log('clicked!')
   event.preventDefault();
 }
 
@@ -42,6 +31,18 @@ API.post(apiName, path, myInit).then(response => {
   render() {
     return (
       <Content>
+      <AWSIoTMQTT
+        ref={(ref) => { this.AWSIoTMQTT = ref; }}
+        type="shadow"
+        region="us-west-2"
+        host="asdasd.iot.aws.com"
+        onReconnect={() => this.onConnect()}
+        onConnect={() => this.onConnect()}
+        onDelta={(thingId, stateObject) => this.onDelta(thingId, stateObject)}
+        onStatus={(thingId, statusType, clientToken, stateObject) =>
+            this.onStatus(thingId, statusType, clientToken, stateObject)}
+        onThingConnected={(thingId) => { this.onThingConnected(thingId); }}
+      />
            <Card style={{flex: 0}}>
              <CardItem>
                <Left>
@@ -83,8 +84,13 @@ API.post(apiName, path, myInit).then(response => {
                       color="#841584"
                       accessibilityLabel="Learn more about this purple button"
                     />
+                <Button
+                   onPress={() => this.updateShadow('temp')}
+                   title="Hello"
+               />
                   </Form>
                 </Content>
+
               </Container>
             </CardItem>
            </Card>
