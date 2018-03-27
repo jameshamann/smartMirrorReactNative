@@ -9,6 +9,8 @@ See the License for the specific language governing permissions and limitations 
 var express = require('express')
 var bodyParser = require('body-parser')
 var AWS = require('aws-sdk')
+var awsIot = require('aws-iot-device-sdk');
+
 
 // declare a new express app
 var app = express()
@@ -29,7 +31,26 @@ AWS.config.update({ region: process.env.REGION })
  **********************/
 
 app.get('/items', function(req, res) {
-  // Add your code here
+  var device = awsIot.device({
+    clientId: 'smartMirror',
+        host: 'azjo7hto1k82k.iot.eu-west-2.amazonaws.com'
+  });
+
+  //
+  // Device is an instance returned by mqtt.Client(), see mqtt.js for full
+  // documentation.
+  //
+  device
+    .on('connect', function() {
+      console.log('connect');
+      device.subscribe('topic_1');
+      device.publish('topic_2', JSON.stringify({ test_data: 1}));
+    });
+
+  device
+    .on('message', function(topic, payload) {
+      console.log('message', topic, payload.toString());
+    });
   res.json({success: 'get call succeed!', url: req.url});
 });
 
