@@ -5,6 +5,7 @@ import Amplify, { API } from 'aws-amplify';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native'
 import AwsIot from 'aws-iot-device-sdk'
 import AWSIoTMQTT from 'react-native-aws-iot-device-shadows'
+
 export default class MainContent extends Component {
 
 constructor(props) {
@@ -31,18 +32,6 @@ handleSubmit(event) {
   render() {
     return (
       <Content>
-      <AWSIoTMQTT
-        ref={(ref) => { this.AWSIoTMQTT = ref; }}
-        type="shadow"
-        region="us-west-2"
-        host="asdasd.iot.aws.com"
-        onReconnect={() => this.onConnect()}
-        onConnect={() => this.onConnect()}
-        onDelta={(thingId, stateObject) => this.onDelta(thingId, stateObject)}
-        onStatus={(thingId, statusType, clientToken, stateObject) =>
-            this.onStatus(thingId, statusType, clientToken, stateObject)}
-        onThingConnected={(thingId) => { this.onThingConnected(thingId); }}
-      />
            <Card style={{flex: 0}}>
              <CardItem>
                <Left>
@@ -84,10 +73,6 @@ handleSubmit(event) {
                       color="#841584"
                       accessibilityLabel="Learn more about this purple button"
                     />
-                <Button
-                   onPress={() => this.updateShadow('temp')}
-                   title="Hello"
-               />
                   </Form>
                 </Content>
 

@@ -66,17 +66,13 @@ class App extends Component {
                       <Title> Miri </Title>
                     </Body>
                 <Right>
-                <Button transparent onPress={this.closeDrawer.bind(this)}>
-                    <Icon name='close'/>
-                </Button>
                 </Right>
                 </Header>
-
-                     <Drawer
+                    <Drawer
                     ref={(ref) => { this._drawer = ref; }}
                     content={<SideBar navigator={this.navigator} userName={this.props.authData.username} />}
                     >
-                    <Connect />
+                    <MainContent />
                     </Drawer>
             </Container>
 

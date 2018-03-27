@@ -88,7 +88,7 @@ class Connect extends Component {
 
     render() {
         return (
-            <Container>
+            <View>
                 <AWSIoTMQTT
                     ref={(ref) => { this.AWSIoTMQTT = ref; }}
                     region="us-west-2"
@@ -106,7 +106,7 @@ class Connect extends Component {
                 >
                     <Text>Update Shadow Randomly</Text>
                 </Button>
-            </Container>
+            </View>
         );
     }
 }
