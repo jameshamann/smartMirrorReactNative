@@ -5,6 +5,8 @@ import Amplify, { API } from 'aws-amplify';
 import AWS from 'aws-sdk/dist/aws-sdk-react-native'
 import AwsIot from 'aws-iot-device-sdk'
 import AWSIoTMQTT from 'react-native-aws-iot-device-shadows'
+import { PubSub } from 'aws-amplify';
+import { AWSIoTProvider } from 'aws-amplify/lib/PubSub/Providers';
 
 export default class MainContent extends Component {
 
@@ -17,6 +19,12 @@ constructor(props) {
 
 }
 
+componentDidMount(){
+  Amplify.addPluggable(new AWSIoTProvider({
+     aws_pubsub_region: 'eu-west-2',
+     aws_pubsub_endpoint: 'wss://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/mqtt',
+   }));
+}
 
 handleChange(event) {
   this.setState({value: event.target.value});

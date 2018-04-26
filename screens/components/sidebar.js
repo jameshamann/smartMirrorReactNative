@@ -9,6 +9,10 @@ export default class SideBar extends Component {
   render() {
     let name = this.props.userName
     console.log(this.props.userName)
+    Auth.currentCredentials().then((info) => {
+     const cognitoIdentityId = info._identityId;
+     console.log(cognitoIdentityId  )
+   });
     return (
           <Content style={{backgroundColor: 'white'}}>
           <Header>
