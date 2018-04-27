@@ -16,6 +16,7 @@
     "amazon-cognito-identity-js": "^2.0.2",
     "asyncstorage-down": "^4.0.1",
     "aws-amplify": "^0.2.15",
+    "aws-amplify-react": "^0.1.43",
     "aws-amplify-react-native": "^0.2.7",
     "aws-iot-device-sdk": "^2.2.1",
     "aws-sdk": "^2.211.0",
