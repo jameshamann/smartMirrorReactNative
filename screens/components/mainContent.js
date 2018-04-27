@@ -39,7 +39,16 @@ handleSubmit(event) {
 }
 
 async pubSub(){
-  await PubSub.publish('topic_1', { msg: 'Hello to all subscribers!' });
+  Amplify.addPluggable(new AWSIoTProvider({
+     aws_pubsub_region: 'eu-west-2',
+     aws_pubsub_endpoint: 'wss://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/mqtt',
+   }));
+   PubSub.subscribe('topic_1').subscribe({
+    next: data => console.log('Message received', data),
+    error: error => console.error(error),
+    close: () => console.log('Done'),
+  });
+  // await PubSub.publish('topic_1', { msg: 'Hello to all subscribers!' });
 }
 
   render() {
