@@ -24,6 +24,7 @@ componentDidMount(){
      aws_pubsub_region: 'eu-west-2',
      aws_pubsub_endpoint: 'wss://azjo7hto1k82k.iot.eu-west-2.amazonaws.com/mqtt',
    }));
+  PubSub.publish('topic_1', { msg: 'Hello to all subscribers!' });
 }
 
 handleChange(event) {
@@ -34,6 +35,7 @@ handleChange(event) {
 handleSubmit(event) {
   console.log('clicked!')
   event.preventDefault();
+  PubSub.publish('topic_1', { msg: 'Hello to all subscribers!' });
 }
 
 
