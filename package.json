@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "npx rn-nodeify --install fs,util,path,tls,stream,buffer,global,process --hack",
     "test": "jest"
   },
   "rnpm": {
@@ -12,21 +13,58 @@
     ]
   },
   "dependencies": {
-    "aws-amplify": "^0.2.9",
-    "aws-amplify-react-native": "^0.2.5",
+    "amazon-cognito-identity-js": "^2.0.2",
+    "asyncstorage-down": "^4.0.1",
+    "aws-amplify": "^0.3.3",
+    "aws-amplify-react": "^0.1.43",
+    "aws-amplify-react-native": "^0.2.7",
+    "aws-iot-device-sdk": "^2.2.1",
+    "aws-sdk": "^2.211.0",
+    "buffer": "^5.1.0",
     "native-base": "^2.3.10",
+    "path-browserify": "0.0.0",
+    "process": "^0.11.10",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.2",
+    "react-native-aws-iot-device-shadows": "^1.0.3",
+    "react-native-level-fs": "^3.0.0",
     "react-native-material-ui": "^1.20.0",
-    "react-native-vector-icons": "^4.5.0"
+    "react-native-vector-icons": "^4.5.0",
+    "readable-stream": "^1.0.33",
+    "stream-browserify": "^1.0.0",
+    "util": "^0.10.3"
   },
   "devDependencies": {
     "babel-jest": "23.0.0-alpha.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.2",
-    "react-test-renderer": "^16.3.0-alpha.1"
+    "react-native-dotenv": "^0.1.1",
+    "react-test-renderer": "^16.3.0-alpha.1",
+    "rn-nodeify": "^10.0.0"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "react-native": {
+    "path": "path-browserify",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "tls": false
+  },
+  "browser": {
+    "path": "path-browserify",
+    "fs": "react-native-level-fs",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "tls": false
   }
 }

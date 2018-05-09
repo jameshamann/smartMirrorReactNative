@@ -1,5 +1,41 @@
 --- !com.amazonaws.mobilehub.v0.Project 
 features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    attributes:
+      no-lock: true
+    components:
+      sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: sampleCloudApi
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /items: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/sampleLambda-20180427095814.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 8OlPXg9QNCa+oAuVQgUeIXAc0xgStDgAiF6salcgV1U=
+            memorySize: '128'
+            modified: '2018-04-27T09:00:31.646+0000'
+            name: sampleLambda
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 8abSmrmoUNdF5V9auKBwBdA9Lb4hbhhV
+          '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/sampleLambda-20180427095814.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 8OlPXg9QNCa+oAuVQgUeIXAc0xgStDgAiF6salcgV1U=
+            memorySize: '128'
+            modified: '2018-04-27T09:00:31.646+0000'
+            name: sampleLambda
+            runtime: nodejs6.10
+            timeout: '3'
+            version: ._TatY68DACddq8NfxvBWkzHOzh3yA9P
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -19,6 +55,7 @@ features:
           alias-attributes:
             - email
             - phone_number
+            - name
           mfa-configuration: ON
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
@@ -27,5 +64,5 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
-name: smartMirrorReactNative-2018-03-18-14-33-28
+name: smartMirrorReactNative-2018-03-22-20-29-34
 region: eu-west-2
