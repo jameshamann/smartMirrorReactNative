@@ -5,15 +5,13 @@ import { Button, Footer, Title, Container, Header, Content, List, ListItem, Text
 export default class SideBar extends Component {
   constructor(props){
     super(props);
-    this.signOut = this.signOut.bind(this);
-
   }
 
   signOut(){
     console.log("CLICKED!")
     Auth.signOut()
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -55,7 +53,7 @@ export default class SideBar extends Component {
               </ListItem>
               <ListItem icon>
                 <Left>
-                  <Button onClick={() => this.signOut()}><Icon name="log-out" /></Button>
+                  <Button onPress={() => this.signOut()}><Icon name="log-out" /></Button>
                 </Left>
                 <Body>
                   <Text>Sign Out</Text>

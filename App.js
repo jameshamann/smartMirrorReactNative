@@ -52,7 +52,6 @@ class App extends Component {
 
 
     render() {
-      let name = this.state.userName
           return (
             <Container>
                 <Header>
