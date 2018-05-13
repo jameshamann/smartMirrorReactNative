@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
 import { Button, Footer, Title, Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch } from 'native-base';
+
 export default class SideBar extends Component {
   constructor(props){
     super(props);
+  }
+
+  signOut(){
+    console.log("CLICKED!")
+    Auth.signOut()
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -45,7 +53,7 @@ export default class SideBar extends Component {
               </ListItem>
               <ListItem icon>
                 <Left>
-                  <Button onClick={() => this.signOut()}><Icon name="log-out" /></Button>
+                  <Button onPress={() => this.signOut()}><Icon name="log-out" /></Button>
                 </Left>
                 <Body>
                   <Text>Sign Out</Text>
