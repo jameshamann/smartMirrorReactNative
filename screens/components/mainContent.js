@@ -71,35 +71,10 @@ async pubSub(){
                  </Text>
                  <Button
                   title="Common Functions"
+                  onPress={(event) => this.handleSubmit(event)}
                   />
                </Body>
              </CardItem>
-             <CardItem>
-               <Left>
-               </Left>
-             </CardItem>
-             <CardItem>
-             <Container>
-                <Header />
-                <Content>
-                  <Form>
-                    <Item>
-                      <Input placeholder="Topic" />
-                    </Item>
-                    <Item last>
-                      <Input placeholder="Message" />
-                    </Item>
-                    <Button
-                      onPress={(event) => this.handleSubmit(event)}
-                      title="Hello"
-                      color="#841584"
-                      accessibilityLabel="Learn more about this purple button"
-                    />
-                  </Form>
-                </Content>
-
-              </Container>
-            </CardItem>
            </Card>
         </Content>
     );
