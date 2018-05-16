@@ -71,7 +71,7 @@ class App extends Component {
                     ref={(ref) => { this._drawer = ref; }}
                     content={<SideBar navigator={this.navigator} userName={this.props.authData.username} />}
                     >
-                    <MainContent />
+                    <MainContent userName={this.props.authData.username} />
                     </Drawer>
             </Container>
 
